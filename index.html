@@ -3,73 +3,59 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gym 5e – Valider mes figures</title>
+<title>Gym 5e – Évaluation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 <style>
-:root{
-  --nuit:#1b1448; --royal:#5b3cc4; --rose:#f0387f; --or:#ffc83d; --ciel:#2aa7e8;
-  --craie:#fffaf0; --menthe:#27c99a; --orange:#ff8a3c;
-}
+:root{--nuit:#1b1448; --royal:#5b3cc4; --rose:#f0387f; --or:#ffc83d; --ciel:#2aa7e8; --craie:#fffaf0; --menthe:#27c99a; --orange:#ff8a3c}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{
-  margin:0; min-height:100vh; color:var(--nuit);
-  font-family:'Baloo 2',system-ui,-apple-system,'Segoe UI',sans-serif; font-size:18px;
-  background:
-    radial-gradient(circle at 12% 8%, rgba(255,200,61,.35) 0 90px, transparent 91px),
-    linear-gradient(175deg,#2c1d84 0%,#5b3cc4 55%,#f0387f 140%);
-  background-attachment:fixed; padding-bottom:70px;
-}
+body{margin:0; min-height:100vh; color:var(--nuit); font-family:'Baloo 2',system-ui,-apple-system,'Segoe UI',sans-serif; font-size:18px;
+  background:radial-gradient(circle at 88% 6%, rgba(255,200,61,.35) 0 90px, transparent 91px), linear-gradient(175deg,#2c1d84 0%,#5b3cc4 55%,#f0387f 140%);
+  background-attachment:fixed; padding-bottom:70px}
 header{position:relative; text-align:center; padding:22px 16px 6px; color:#fff; overflow:hidden}
 header svg{position:absolute; inset:0; width:100%; height:100%; pointer-events:none}
-header h1{position:relative; margin:0; font-size:clamp(30px,5vw,48px); font-weight:800; line-height:1.05; letter-spacing:.5px}
+header h1{position:relative; margin:0; font-size:clamp(30px,5vw,48px); font-weight:800; line-height:1.05}
 header p{position:relative; margin:4px 0 0; font-size:19px; opacity:.92}
 .wrap{max-width:1000px; margin:0 auto; padding:10px 16px 0}
-.carte{background:var(--craie); border-radius:26px 26px 26px 6px; padding:18px 20px; box-shadow:0 8px 0 rgba(27,20,72,.35); margin-top:14px}
-.onglets{display:flex; gap:10px; margin-top:12px}
-.onglets button{flex:1; border:0; padding:12px 10px; border-radius:20px 20px 4px 4px; font:800 21px 'Baloo 2',sans-serif;
-  background:rgba(255,255,255,.22); color:#fff; cursor:pointer}
-.onglets button[aria-selected=true]{background:var(--craie); color:var(--nuit)}
-.champs{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px}
+.carte{background:var(--craie); border-radius:26px 26px 26px 6px; padding:18px 20px; box-shadow:0 8px 0 rgba(27,20,72,.35); margin-top:16px}
+.carte h2{margin:0 0 10px; font-size:26px}
+.champs{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; align-items:end}
 label{display:block; font-weight:700; font-size:17px; margin-bottom:4px}
 input,select{width:100%; font:600 20px 'Baloo 2',sans-serif; padding:10px 14px; border-radius:14px; border:3px solid #cfc6f3; background:#fff; color:var(--nuit)}
 input:focus,select:focus,button:focus-visible{outline:4px solid var(--or); outline-offset:2px}
-.verbes{display:flex; gap:10px; margin:18px 0 6px; flex-wrap:wrap}
-.verbes button{flex:1; min-width:150px; border:0; border-radius:999px; padding:12px 14px; font:800 22px 'Baloo 2',sans-serif; color:#fff; cursor:pointer; opacity:.55; transition:opacity .15s, transform .15s}
-.verbes button[aria-pressed=true]{opacity:1; transform:translateY(-3px); box-shadow:0 5px 0 rgba(27,20,72,.3)}
-.v-voler{background:var(--ciel)} .v-renverser{background:var(--rose)} .v-tourner{background:var(--orange)}
-.exo{padding:14px 0; border-top:3px dashed #d9d0f6}
-.exo:first-child{border-top:0}
-.exo-t{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:8px}
-.exo-t b{font-size:23px}
-.sur{background:var(--nuit); color:var(--or); border-radius:999px; padding:2px 14px; font-weight:700; white-space:nowrap}
-.nivs{display:flex; gap:10px}
-.niv{flex:1; min-width:0; border:0; border-radius:18px; padding:8px 0 6px; color:#fff; cursor:pointer; line-height:1.05;
-  box-shadow:0 5px 0 rgba(27,20,72,.28); transition:transform .08s}
-.niv:active{transform:translateY(4px); box-shadow:0 1px 0 rgba(27,20,72,.28)}
-.niv span{display:block; font:800 32px 'Baloo 2',sans-serif}
-.niv small{display:block; font-size:15px; font-weight:700}
-.nA{background:#2aa7e8}.nB{background:#27c99a}.nC{background:#e9ac00;color:var(--nuit)}.nD{background:#ff8a3c}.nE{background:#f0387f}
 .btn{border:0; border-radius:16px; padding:12px 26px; font:800 22px 'Baloo 2',sans-serif; background:var(--royal); color:#fff; cursor:pointer; box-shadow:0 5px 0 rgba(27,20,72,.3)}
+.btn:disabled{opacity:.4; cursor:not-allowed}
 .btn.sec{background:#e4defa; color:var(--nuit)}
-.res{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:12px 0; border-top:3px dashed #d9d0f6}
-.res:first-of-type{border-top:0}
-.badge{min-width:54px; text-align:center; border-radius:14px; padding:4px 12px; font:800 26px 'Baloo 2',sans-serif; color:#fff}
-.badge.vide{background:#e4defa; color:#8a80b8}
-.info{font-weight:600; color:#5a4f94; margin:4px 0 0}
+.info{font-weight:600; color:#5a4f94; margin:8px 0 0}
+.err{color:#b3123f; font-weight:700}
+.elem{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; border-radius:18px; margin-top:10px; color:#fff}
+.elem b{font-size:22px}
+.elem.voler{background:var(--ciel)} .elem.renverser{background:var(--rose)} .elem.tourner{background:#e9870b}
+.elem button{border:0; border-radius:12px; padding:6px 14px; font:700 17px 'Baloo 2',sans-serif; cursor:pointer; background:rgba(255,255,255,.9); color:var(--nuit)}
+.bloc{padding:14px 0; border-top:3px dashed #d9d0f6}
+.bloc:first-of-type{border-top:0}
+.bloc>b{display:block; font-size:22px; margin-bottom:8px}
+.rang{display:flex; gap:10px; flex-wrap:wrap}
+.pill{border:0; border-radius:16px; padding:10px 18px; font:800 22px 'Baloo 2',sans-serif; background:#e4defa; color:var(--nuit); cursor:pointer; box-shadow:0 4px 0 rgba(27,20,72,.22); min-width:64px}
+.pill small{display:block; font-size:14px; font-weight:700}
+.rang.m .pill{flex:1; min-width:140px}
+.pill[aria-pressed=true]{color:#fff; background:var(--royal)}
+.pill.p2[aria-pressed=true]{background:var(--menthe)} .pill.p1[aria-pressed=true]{background:#e9ac00; color:var(--nuit)} .pill.p0[aria-pressed=true]{background:var(--rose)}
+.recap{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; margin-top:6px}
+.score{background:#0c0a22; border:4px solid var(--or); border-radius:16px; padding:8px 10px; text-align:center}
+.score b{display:block; font:900 28px 'Orbitron',monospace; color:#ffd24a; text-shadow:0 0 12px rgba(255,200,61,.6)}
+.score small{color:#9fa0d8; font-size:15px}
+.score.total{grid-column:1/-1}
+.score.total b{font-size:clamp(38px,9vw,58px)}
 .fond{position:fixed; inset:0; background:rgba(27,20,72,.72); display:none; align-items:center; justify-content:center; padding:16px; z-index:10}
 .fond.on{display:flex}
 .boite{background:var(--craie); border-radius:28px; padding:24px; max-width:520px; width:100%; text-align:center; box-shadow:0 10px 0 rgba(0,0,0,.3)}
 .boite p{margin:0 0 16px; font-size:21px; line-height:1.3}
 .boite .acts{display:flex; gap:12px; justify-content:center}
-.tableau{display:inline-block; background:#0c0a22; border:5px solid var(--or); border-radius:16px; padding:10px 26px; margin:6px 0 14px}
-.tableau b{display:block; font:900 clamp(40px,10vw,64px) 'Orbitron',monospace; color:#ffd24a; text-shadow:0 0 14px rgba(255,200,61,.7)}
-.tableau small{color:#9fa0d8; font-size:16px}
 .tapis{position:fixed; left:0; right:0; bottom:0; height:34px; background:repeating-linear-gradient(90deg,#2aa7e8 0 90px,#1f8ccb 90px 180px); border-top:6px solid #fff}
-.err{color:#b3123f; font-weight:700}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -77,38 +63,41 @@ input:focus,select:focus,button:focus-visible{outline:4px solid var(--or); outli
   <svg viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true">
     <path d="M-10 120 C 120 20, 200 150, 330 70 S 520 10, 640 80 S 860 140, 1010 30" fill="none" stroke="#ffc83d" stroke-width="7" stroke-linecap="round" opacity=".85"/>
     <path d="M-10 140 C 140 60, 230 160, 370 100 S 560 40, 680 110 S 880 150, 1010 70" fill="none" stroke="#ff7ab0" stroke-width="5" stroke-linecap="round" opacity=".8"/>
-    <circle cx="905" cy="38" r="22" fill="#ffc83d"/><circle cx="905" cy="38" r="13" fill="none" stroke="#5b3cc4" stroke-width="4"/>
+    <circle cx="95" cy="38" r="22" fill="#ffc83d"/><circle cx="95" cy="38" r="13" fill="none" stroke="#5b3cc4" stroke-width="4"/>
   </svg>
-  <h1>Gym 5e : valide tes figures</h1>
-  <p>Voler, se renverser, tourner : chaque niveau compte pour ta note.</p>
+  <h1>Gym 5e : évaluation</h1>
+  <p>Trois éléments, trois agrès différents : prépare ton passage.</p>
 </header>
 
 <div class="wrap">
-  <div class="onglets" role="tablist">
-    <button role="tab" id="t-val" aria-selected="true">Valider une figure</button>
-    <button role="tab" id="t-rec" aria-selected="false">Retrouver mes validations</button>
-  </div>
-
-  <section class="carte" id="p-val">
+  <section class="carte">
+    <h2>1. Mon passage</h2>
     <div class="champs">
       <div><label for="classe">Classe</label>
         <select id="classe"><option>5A</option><option>5B</option><option>5C</option><option>5D</option><option>5E</option></select></div>
       <div><label for="eleve">Mon pseudo</label><input id="eleve" autocomplete="off" maxlength="40"></div>
-      <div><label for="valid">Pseudo du validateur</label><input id="valid" autocomplete="off" maxlength="40"></div>
+      <div><button class="btn" id="charger">Charger mes figures</button></div>
     </div>
-    <div class="verbes" id="verbes"></div>
-    <div id="exos"></div>
+    <p class="info" id="msg"></p>
+
+    <div id="choix" hidden>
+      <div class="champs" style="margin-top:14px">
+        <div><label for="sv">Verbe</label><select id="sv"></select></div>
+        <div><label for="sa">Agrès</label><select id="sa" disabled></select></div>
+        <div><label for="se">Exercice</label><select id="se" disabled></select></div>
+        <div><button class="btn" id="ajout" disabled>Ajouter</button></div>
+      </div>
+    </div>
+    <div id="elems"></div>
   </section>
 
-  <section class="carte" id="p-rec" hidden>
-    <div class="champs">
-      <div><label for="classe2">Classe</label><select id="classe2"></select></div>
-      <div><label for="eleve2">Mon pseudo</label><input id="eleve2" autocomplete="off" maxlength="40"></div>
-      <div><label for="verbe2">Verbe</label>
-        <select id="verbe2"><option value="tourner">tourner</option><option value="voler">voler</option><option value="renverser">se renverser</option></select></div>
+  <section class="carte" id="prof">
+    <h2>2. Notation (enseignant)</h2>
+    <div id="verrou" class="champs">
+      <div><label for="code">Code enseignant</label><input id="code" type="password" autocomplete="off"></div>
+      <div><button class="btn" id="ouvrir">Déverrouiller</button></div>
     </div>
-    <p style="margin:16px 0 0"><button class="btn" id="chercher">Rechercher</button></p>
-    <div id="resultat" style="margin-top:12px"></div>
+    <div id="notes" hidden></div>
   </section>
 </div>
 
@@ -119,55 +108,32 @@ input:focus,select:focus,button:focus-visible{outline:4px solid var(--or); outli
 const URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbxOS3FvbDMj50oNbwVEpE0KgvpbffS4H69KH6u41QWYAItsIhTVQFbOzMGD0JM803eX/exec';
 
 const PTS = {A:0.5, B:1, C:1.5, D:2, E:2.5};
+const AGRES = {sol:'Sol', poutre:'Poutre', asym:'Barres asymétriques', parall:'Barres parallèles'};
 const VERBES = [
-  {id:'voler', nom:'Voler', exos:[
-    {col:4, nom:'Sol / salto avant', max:'E'}, {col:5, nom:'Sol / sauts', max:'E'},
-    {col:6, nom:'Poutre / sortie', max:'E'}, {col:7, nom:'Barres asymétriques / sortie', max:'E'}]},
-  {id:'renverser', nom:'Se renverser', exos:[
-    {col:8, nom:'Sol / ATR', max:'E'}, {col:9, nom:'Sol / roue', max:'E'},
-    {col:10, nom:'Barres asymétriques / ATR', max:'D'}, {col:11, nom:'Poutre / sortie', max:'D'}]},
-  {id:'tourner', nom:'Tourner', exos:[
-    {col:12, nom:'Sol / roulade avant', max:'E'}, {col:13, nom:'Sol / roulade arrière', max:'E'},
-    {col:14, nom:'Barres asymétriques / rotation avant-arrière', max:'E'}, {col:15, nom:'Barres parallèles / rotation avant', max:'D'}]}
+  {id:'voler', nom:'Voler', exos:[{col:4, ag:'sol', nom:'Salto avant'}, {col:5, ag:'sol', nom:'Sauts'}, {col:6, ag:'poutre', nom:'Sortie'}, {col:7, ag:'asym', nom:'Sortie'}]},
+  {id:'renverser', nom:'Se renverser', exos:[{col:8, ag:'sol', nom:'ATR'}, {col:9, ag:'sol', nom:'Roue'}, {col:10, ag:'asym', nom:'ATR'}, {col:11, ag:'poutre', nom:'Sortie'}]},
+  {id:'tourner', nom:'Tourner', exos:[{col:12, ag:'sol', nom:'Roulade avant'}, {col:13, ag:'sol', nom:'Roulade arrière'}, {col:14, ag:'asym', nom:'Rotation avant-arrière'}, {col:15, ag:'parall', nom:'Rotation avant'}]}
 ];
+const FLU = [1, 1.75, 2.5];
+const SEC = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4];
+
 const $ = s => document.querySelector(s);
-const f = n => n.toLocaleString('fr-FR');
+const f = n => n.toLocaleString('fr-FR', {maximumFractionDigits:2});
 const pts = n => f(n) + (n > 1 ? ' pts' : ' pt');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const norm = s => s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ');
 const exoDe = col => VERBES.flatMap(v => v.exos).find(e => e.col === col);
-let verbe = 'voler';
 
-/* classe mémorisée sur la tablette (facultatif) */
-try { const c = localStorage.getItem('gym5e-classe'); if (c) $('#classe').value = c; } catch (e) {}
-$('#classe2').innerHTML = $('#classe').innerHTML;
-$('#classe2').value = $('#classe').value;
-$('#classe').onchange = () => { $('#classe2').value = $('#classe').value; try { localStorage.setItem('gym5e-classe', $('#classe').value); } catch (e) {} };
-$('#classe2').onchange = () => { $('#classe').value = $('#classe2').value; $('#classe').onchange(); };
+let niveaux = {}, pseudo = '', charge = false, elements = {}, code = null, flu = null, sec = null;
 
-/* onglets */
-function onglet(rec) {
-  $('#t-val').setAttribute('aria-selected', !rec); $('#t-rec').setAttribute('aria-selected', rec);
-  $('#p-val').hidden = rec; $('#p-rec').hidden = !rec;
+/* ---------- appels au script ---------- */
+async function appel(params, post) {
+  const r = post
+    ? await fetch(URL_SCRIPT, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(params)})
+    : await fetch(URL_SCRIPT + '?' + new URLSearchParams(params));
+  return r.json();
 }
-$('#t-val').onclick = () => onglet(false);
-$('#t-rec').onclick = () => onglet(true);
 
-/* choix du verbe + figures */
-function dessiner() {
-  $('#verbes').innerHTML = VERBES.map(v =>
-    `<button class="v-${v.id}" data-v="${v.id}" aria-pressed="${v.id === verbe}">${v.nom}</button>`).join('');
-  const v = VERBES.find(x => x.id === verbe);
-  $('#exos').innerHTML = v.exos.map(e => `
-    <div class="exo"><div class="exo-t"><b>${e.nom}</b><span class="sur">sur ${f(PTS[e.max])}</span></div>
-    <div class="nivs">${'ABCDE'.slice(0, 'ABCDE'.indexOf(e.max) + 1).split('').map(l =>
-      `<button class="niv n${l}" data-col="${e.col}" data-niv="${l}"><span>${l}</span><small>${pts(PTS[l])}</small></button>`).join('')}
-    </div></div>`).join('');
-}
-$('#verbes').onclick = ev => { const b = ev.target.closest('button'); if (b) { verbe = b.dataset.v; dessiner(); } };
-$('#exos').onclick = ev => { const b = ev.target.closest('.niv'); if (b) demander(Number(b.dataset.col), b.dataset.niv); };
-
-/* fenêtres */
+/* ---------- fenêtres ---------- */
 function fenetre(html, actions) {
   $('#boite').innerHTML = html + '<div class="acts"></div>';
   actions.forEach(a => {
@@ -177,50 +143,148 @@ function fenetre(html, actions) {
   });
   $('#fond').classList.add('on');
 }
-const info = msg => fenetre(`<p class="err">${msg}</p>`, [{txt:'OK'}]);
+const info = msg => fenetre(`<p class="err">${esc(msg)}</p>`, [{txt:'OK'}]);
 
-function demander(col, niv) {
-  const eleve = $('#eleve').value.trim(), valid = $('#valid').value.trim(), e = exoDe(col);
-  if (!eleve || !valid) return info('Écris ton pseudo et celui de ton validateur.');
-  if (norm(eleve) === norm(valid)) return info('Tu ne peux pas te valider toi-même : demande à un camarade !');
-  fenetre(`<p><b>${esc(eleve)}</b>, valider le niveau <b>${niv}</b> (${pts(PTS[niv])} sur ${f(PTS[e.max])}) pour « ${e.nom} », validé par <b>${esc(valid)}</b> ?<br><small>Si cette figure est déjà validée, l’ancien niveau sera remplacé.</small></p>`,
-    [{txt:'Annuler', sec:true}, {txt:'Valider', fn:() => envoyer(col, niv, eleve, valid)}]);
-}
-
-async function envoyer(col, niv, eleve, valid) {
-  const e = exoDe(col);
-  fenetre('<p>Envoi en cours…</p>', []);
+/* ---------- 1. choix de l'élève ---------- */
+$('#charger').onclick = async () => {
+  const e = $('#eleve').value.trim();
+  if (!e) { $('#msg').innerHTML = '<span class="err">Écris ton pseudo.</span>'; return; }
+  $('#msg').textContent = 'Chargement…';
   try {
-    const r = await fetch(URL_SCRIPT, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'},
-      body: JSON.stringify({action:'valider', classe:$('#classe').value, eleve, validateur:valid, col, niveau:niv})});
-    const d = await r.json();
-    if (d.status !== 'ok') return fenetre(`<p class="err">${esc(d.message || 'Erreur inconnue.')}</p>`, [{txt:'OK'}]);
-    const ancien = d.precedent ? `<p><small>Remplace le niveau ${esc(d.precedent)} validé avant.</small></p>` : '';
-    fenetre(`<p><b>Bravo ${esc(eleve)} !</b><br>${e.nom} : niveau ${niv}</p>
-      <div class="tableau"><b>${f(PTS[niv])} / ${f(PTS[e.max])}</b><small>note de la figure</small></div>${ancien}`, [{txt:'Super !'}]);
-  } catch (err) {
-    fenetre('<p class="err">Impossible d’envoyer : vérifie la connexion et réessaie.</p>', [{txt:'OK'}]);
-  }
-}
+    const d = await appel({action:'figures', classe:$('#classe').value, eleve:e});
+    if (d.status === 'absent') { $('#msg').innerHTML = '<span class="err">Pseudo introuvable dans cette classe : vérifie l’orthographe et la classe.</span>'; return; }
+    if (d.status !== 'ok') { $('#msg').innerHTML = `<span class="err">${esc(d.message || 'Erreur inconnue.')}</span>`; return; }
+    niveaux = d.niveaux; pseudo = d.pseudo; charge = true; elements = {}; flu = null; sec = null;
+    const n = Object.keys(niveaux).length;
+    $('#msg').textContent = n ? `${pseudo} : ${n} figure${n > 1 ? 's' : ''} validée${n > 1 ? 's' : ''}.` : `${pseudo} n’a encore validé aucune figure.`;
+    tout();
+  } catch (err) { $('#msg').innerHTML = '<span class="err">Impossible de joindre le tableau : vérifie la connexion.</span>'; }
+};
+$('#eleve').oninput = () => { if (charge) { charge = false; elements = {}; niveaux = {}; $('#msg').textContent = ''; tout(); } };
+$('#classe').onchange = $('#eleve').oninput;
 
-/* recherche */
-$('#chercher').onclick = async () => {
-  const eleve = $('#eleve2').value.trim(), out = $('#resultat');
-  if (!eleve) { out.innerHTML = '<p class="err">Écris ton pseudo.</p>'; return; }
-  out.innerHTML = '<p class="info">Recherche en cours…</p>';
-  try {
-    const q = new URLSearchParams({action:'recherche', classe:$('#classe2').value, eleve, verbe:$('#verbe2').value});
-    const d = await (await fetch(URL_SCRIPT + '?' + q)).json();
-    if (d.status === 'absent') { out.innerHTML = `<p class="info">Aucune validation pour « ${esc(eleve)} » en ${esc($('#classe2').value)}. Vérifie l’orthographe du pseudo et la classe.</p>`; return; }
-    if (d.status !== 'ok') { out.innerHTML = `<p class="err">${esc(d.message || 'Erreur inconnue.')}</p>`; return; }
-    out.innerHTML = d.exos.map(e => {
-      const n = e.niveau;
-      return `<div class="res"><b>${esc(e.nom)}</b><span>${n ? `<span class="badge n${n}">${n}</span> ${pts(PTS[n])} sur ${f(PTS[e.max])}` : `<span class="badge vide">–</span> pas encore validée`}</span></div>`;
-    }).join('') + `<p class="info">Dernière validation : ${esc(d.date || 'date inconnue')}</p>`;
-  } catch (err) { out.innerHTML = '<p class="err">Impossible de joindre le tableau : vérifie la connexion.</p>'; }
+const agresPris = sauf => new Set(Object.entries(elements).filter(([v]) => v !== sauf).map(([, el]) => exoDe(el.col).ag));
+
+function choixVerbe() {
+  $('#sv').innerHTML = '<option value="">Choisis un verbe</option>' + VERBES.map(v =>
+    `<option value="${v.id}"${elements[v.id] ? ' disabled' : ''}>${v.nom}${elements[v.id] ? ' (choisi)' : ''}</option>`).join('');
+  $('#sa').innerHTML = ''; $('#sa').disabled = true; $('#se').innerHTML = ''; $('#se').disabled = true; $('#ajout').disabled = true;
+}
+$('#sv').onchange = () => {
+  const v = VERBES.find(x => x.id === $('#sv').value), pris = agresPris(v && v.id);
+  $('#se').innerHTML = ''; $('#se').disabled = true; $('#ajout').disabled = true;
+  if (!v) { $('#sa').innerHTML = ''; $('#sa').disabled = true; return; }
+  const ags = [...new Set(v.exos.map(e => e.ag))];
+  $('#sa').innerHTML = '<option value="">Choisis un agrès</option>' + ags.map(a => {
+    const dispo = v.exos.some(e => e.ag === a && niveaux[e.col]);
+    const raison = pris.has(a) ? ' (déjà utilisé)' : !dispo ? ' (aucune figure validée)' : '';
+    return `<option value="${a}"${raison ? ' disabled' : ''}>${AGRES[a]}${raison}</option>`;
+  }).join('');
+  $('#sa').disabled = false;
+};
+$('#sa').onchange = () => {
+  const v = VERBES.find(x => x.id === $('#sv').value), a = $('#sa').value;
+  const liste = v.exos.filter(e => e.ag === a && niveaux[e.col]);
+  $('#se').innerHTML = (liste.length > 1 ? '<option value="">Choisis un exercice</option>' : '') + liste.map(e =>
+    `<option value="${e.col}">${e.nom} · niveau ${niveaux[e.col]} (${pts(PTS[niveaux[e.col]])})</option>`).join('');
+  $('#se').disabled = false; $('#ajout').disabled = !$('#se').value;
+};
+$('#se').onchange = () => { $('#ajout').disabled = !$('#se').value; };
+$('#ajout').onclick = () => {
+  const v = $('#sv').value, col = Number($('#se').value);
+  if (!v || !col) return;
+  elements[v] = {col, maitrise:null}; tout();
 };
 
-dessiner();
+function dessinerElems() {
+  $('#elems').innerHTML = VERBES.filter(v => elements[v.id]).map(v => {
+    const e = exoDe(elements[v.id].col), n = niveaux[e.col];
+    return `<div class="elem ${v.id}"><span><b>${v.nom}</b> : ${AGRES[e.ag]} · ${e.nom} · niveau ${n} (${pts(PTS[n])})</span>
+      <button data-rm="${v.id}">Retirer</button></div>`;
+  }).join('');
+}
+$('#elems').onclick = ev => { const b = ev.target.closest('[data-rm]'); if (b) { delete elements[b.dataset.rm]; flu = null; sec = null; tout(); } };
+
+/* ---------- 2. notation par l'enseignant ---------- */
+$('#ouvrir').onclick = async () => {
+  const c = $('#code').value;
+  try {
+    const d = await appel({action:'code', code:c}, true);
+    if (d.status !== 'ok') return info(d.message || 'Code incorrect.');
+    code = c; tout();
+  } catch (err) { info('Impossible de joindre le tableau : vérifie la connexion.'); }
+};
+
+const pret = () => VERBES.every(v => elements[v.id] && elements[v.id].maitrise !== null);
+function calc() {
+  let perf = 0, mait = 0;
+  VERBES.forEach(v => { const e = elements[v.id]; if (e && e.maitrise !== null) { mait += e.maitrise; if (e.maitrise > 0) perf += PTS[niveaux[e.col]]; } });
+  return {perf, mait, flu:flu || 0, sec:sec || 0, total:perf + mait + (flu || 0) + (sec || 0)};
+}
+
+function dessinerNotes() {
+  const zone = $('#notes');
+  if (!code) { zone.hidden = true; return; }
+  zone.hidden = false;
+  if (!charge || VERBES.some(v => !elements[v.id])) { zone.innerHTML = '<p class="info">L’élève doit d’abord charger ses figures et choisir ses 3 éléments (un par verbe).</p>'; return; }
+  const m = [['2', '1er essai'], ['1', '2ᵉ essai'], ['0', 'raté 2 fois']];
+  const c = calc(), ok = pret() && flu !== null && sec !== null;
+  zone.innerHTML = VERBES.map(v => {
+    const e = exoDe(elements[v.id].col), cur = elements[v.id].maitrise;
+    return `<div class="bloc"><b>${v.nom} : ${AGRES[e.ag]} · ${e.nom} (niveau ${niveaux[e.col]})</b>
+      <div class="rang m">${m.map(([val, t]) => `<button class="pill p${val}" data-k="m" data-v="${v.id}:${val}" aria-pressed="${cur === Number(val)}">${val}<small>${t}</small></button>`).join('')}</div></div>`;
+  }).join('') + `
+    <div class="bloc"><b>Fluidité de l’enchaînement (sur 2,5)</b>
+      <div class="rang">${FLU.map(x => `<button class="pill" data-k="flu" data-v="${x}" aria-pressed="${flu === x}">${f(x)}</button>`).join('')}</div></div>
+    <div class="bloc"><b>Sécurité et autonomie sur le cycle (sur 4)</b>
+      <div class="rang">${SEC.map(x => `<button class="pill" data-k="sec" data-v="${x}" aria-pressed="${sec === x}">${f(x)}</button>`).join('')}</div></div>
+    <div class="recap">
+      <div class="score"><b>${f(c.perf)}</b><small>performance / 7,5</small></div>
+      <div class="score"><b>${f(c.mait)}</b><small>maîtrise / 6</small></div>
+      <div class="score"><b>${f(c.flu)}</b><small>fluidité / 2,5</small></div>
+      <div class="score"><b>${f(c.sec)}</b><small>sécurité / 4</small></div>
+      <div class="score total"><b>${f(c.total)} / 20</b><small>note totale</small></div>
+    </div>
+    <p style="margin:16px 0 0"><button class="btn" id="enreg"${ok ? '' : ' disabled'}>Enregistrer l’évaluation</button></p>`;
+}
+$('#notes').onclick = ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  if (b.id === 'enreg') return enregistrer(false);
+  const k = b.dataset.k, v = b.dataset.v;
+  if (k === 'm') { const [id, val] = v.split(':'); elements[id].maitrise = Number(val); }
+  else if (k === 'flu') flu = Number(v);
+  else if (k === 'sec') sec = Number(v);
+  dessinerNotes();
+};
+
+async function enregistrer(confirmer) {
+  const c = calc();
+  fenetre('<p>Envoi en cours…</p>', []);
+  try {
+    const els = {}; VERBES.forEach(v => els[v.id] = {col:elements[v.id].col, maitrise:elements[v.id].maitrise});
+    const d = await appel({action:'evaluer', classe:$('#classe').value, eleve:pseudo, code, confirm:confirmer, elements:els, fluidite:flu, securite:sec}, true);
+    if (d.status === 'existe') return fenetre(`<p><b>${esc(pseudo)}</b> a déjà une évaluation enregistrée. La remplacer ?</p>`,
+      [{txt:'Annuler', sec:true}, {txt:'Remplacer', fn:() => enregistrer(true)}]);
+    if (d.status !== 'ok') return info(d.message || 'Erreur inconnue.');
+    fenetre(`<p><b>Évaluation enregistrée pour ${esc(pseudo)} !</b></p>
+      <div class="score total" style="margin-bottom:14px"><b>${f(c.total)} / 20</b><small>note totale</small></div>`,
+      [{txt:'Élève suivant', fn:nouvelEleve}]);
+  } catch (err) { info('Impossible d’envoyer : vérifie la connexion et réessaie.'); }
+}
+
+function nouvelEleve() {
+  niveaux = {}; pseudo = ''; charge = false; elements = {}; flu = null; sec = null;
+  $('#eleve').value = ''; $('#msg').textContent = ''; tout();
+}
+
+function tout() {
+  $('#choix').hidden = !charge;
+  if (charge) choixVerbe();
+  dessinerElems();
+  $('#verrou').hidden = !!code;
+  dessinerNotes();
+}
+tout();
 </script>
 </body>
 </html>
